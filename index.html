@@ -63,55 +63,6 @@
 		
 		<script src="../ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
 
-        <script>
-			$(document).ready( function(){ //Quando documento estiver pronto
-			    $('#btn').click( function(){ /* Quando clicar em #btn */
-			        /* Coletando dados */
-			        var nome  = $('#nome').val();
-			        var email = $('#email').val();
-			        var msg   = $('#msg').val();                                      
-
-			        /* Validando */
-			        if(nome.length <= 3){           
-			            alert('Informe seu nome');                        
-			            return false;           
-			        }                         
-			        if(email.length <= 5){           
-			            alert('Informe seu e-mail');                        
-			            return false;           
-			        }      
-			        if(msg.length <= 5){           
-			            alert('Escreva uma mensagem');                    
-			            return false;           
-			        }                     
-
-			        /* construindo url */
-			        var urlData = "&nome=" + nome + "&email=" + email + "&msg=" + msg ;
-
-			        /* Ajax */
-			        $.ajax({
-						
-			             type: "POST",
-			             url: "contato.php", /* endereço do phpmailer */
-			             async: true,
-			             data: urlData, /* informa Url */
-			             success: function(data) { /* sucesso */
-			                 $('#retornoHTML').html(data);
-			             },
-			             beforeSend: function() { /* antes de enviar */
-			                 $('.loading').fadeIn('fast'); 
-			             },
-			             complete: function(){ /* completo */               
-			                 $('.loading').fadeOut('fast');
-			             }
-			         });
-			    });    
-			});
-        </script>
-        <style>
-            .loading { display: none; }
-            /* .whatsapp { position: fixed;top: 82%;left: 1%;padding: 10px;z-index: 10000000; } */
-        </style>
 	</head>
 
 	<body class="no-trans">
@@ -636,55 +587,10 @@
 								</ul>
 							</div>
 						</div>
-						<div class="col-sm-6">
-							<div id="retornoHTML" class="footer-content">
-								<form role="form" id="footer-form">
-									<div class="form-group has-feedback">
-										<label class="sr-only" for="nome">Seu Nome</label>
-										<input type="text" class="form-control" id="nome" placeholder="Digite aqui seu nome" name="nome" required>
-										<i class="fa fa-user form-control-feedback"></i>
-									</div>
-									<div class="form-group has-feedback">
-										<label class="sr-only" for="email">Seu E-mail</label>
-										<input type="email" class="form-control" id="email" placeholder="Digite aqui seu e-mail" name="email" required>
-										<i class="fa fa-envelope form-control-feedback"></i>
-									</div>
-									<div class="form-group has-feedback">
-										<label class="sr-only" for="msg">Sua Mensagem</label>
-										<textarea class="form-control" rows="8" id="msg" placeholder="Digite aqui sua mensagem" name="msg" required></textarea>
-										<i class="fa fa-pencil form-control-feedback"></i>
-									</div>
-									<input type="button" id="btn" value="Enviar" class="btn btn-default">
-									<img src="loading.gif" class="loading">
-								</form>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 			<!-- .footer end -->
-
-			<!--Start of WattsApp Script-->
-			<link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-			<a href="../api.whatsapp.com/send/index0a5b.html?phone=5595984004566&text=Olá+Cliente+Gostaria+de+Informações+para+um+trabalho?.&app_absent=0&lang=pt_pt" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#428bca;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
-			  z-index:1000;" target="_blank">
-			<i style="margin-top:16px" class="fa fa-whatsapp"></i>
-			</a>
-			<!--End of WattsApp Script-->
-
-			<!--Start of Tawk.to Script-->
-			<!--<script type="text/javascript">
-			var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-			(function(){
-			var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-			s1.async=true;
-			s1.src='https://embed.tawk.to/5cebeb3b2135900bac12b049/default';
-			s1.charset='UTF-8';
-			s1.setAttribute('crossorigin','*');
-			s0.parentNode.insertBefore(s1,s0);
-			})();
-			</script>-->
-			<!--End of Tawk.to Script-->
 
 			<!-- .subfooter start -->
 			<!-- ================ -->
@@ -702,28 +608,6 @@
 		</footer>
 		<!-- footer end -->
 		<script src="../ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-		<script type="text/javascript">
-        $(document).ready(function () {
-            $('#formulario').submit(function() {
-                var dados = $('#formulario').serialize();
-
-                $.ajax({
-                    type : 'POST',
-                    url  : 'contato.php',
-                    data : dados,
-                    dataType: 'json',
-                    success :  function(response){
-                        $('#divResultado').css('display', 'block')
-                            .removeClass()
-                            .addClass(response.tipo)
-                            .html('')
-                            .html('<p>' + response.divResultado + '</p>');
-                    }
-                });				
-                return false;
-            });
-        });
-    </script>
 </body>
 		<!-- JavaScript files placed at the end of the document so the pages load faster
 		================================================== -->
@@ -751,13 +635,6 @@
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="../www.googletagmanager.com/gtag/js2079?id=UA-158170953-2"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'UA-158170953-2');
-		</script>
 
 	</body>
 </html>
